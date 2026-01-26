@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* ------ Header ------ */
+
+header {
+  border-bottom: 1px solid #eee;
+}
+
+header .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: var(--space-md);
+  gap: var(--space-sm);
+}
+
+.logo {
+  max-width: 160px;
+  filter: drop-shadow(0 0 20px #000000);
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+nav .button-logIn {
+  padding: var(--space-sm) var(--space-md);
+  color: #ddd;
+  background-color: #033fc0;
+  border-radius: 4px;
+  border: none;
+  overflow: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+nav .button-logIn:hover {
+  background-color: #2563eb;
+  box-shadow: 0 0 2px #2563eb;
+  transform: translateY(-1px);
+}
+
+nav .button-logIn:active {
+  background-color: #033fc0;
+  box-shadow: 0 0 2px #033fc0;
+  transform: translateY(-1px) scale(0.95);
+}
+
+.search-toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-toggle img {
+  width: var(--space-lg);
+}
+
+.search-input {
+  border: solid 1px #ddd;
+  border-radius: 6px;
+  padding: var(--space-sm) var(--space-md);
+  width: 220px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.search-input.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+/* ------ Main ------ */
+
+section {
+  padding-block: clamp(24px, 5vw, 48px);
+}
+
+section > p {
+  max-width: 65ch;
+}
+
+/* ------ Aside ------ */
+
+aside {
+  background: #fff3cd;
+  padding: var(--space-md);
+  text-align: center;
+  font-weight: 500;
+}
+
+aside button {
+  border: none;
+  background: transparent;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: var(--space-sm);
+}
+
+/* ------ Section 1 ------ */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+  gap: var(--space-lg);
+  justify-content: center;
+}
+
+.product-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-card button {
+  margin-top: auto;
+  color: #2563eb;
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  text-decoration: underline;
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 250px;
+  border-radius: 4px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.product-card .name-product {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #303030;
+  margin-bottom: var(--space-sm);
+}
+
+.product-card .price {
+  color: #033fc0;
+  margin-bottom: var(--space-md);
+}
+
+/* ... */
+
+.hidden {
+  display: none !important;
+}
+
+/* ------ Modal ------ */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  max-width: 600px;
+  width: 90%;
+  padding: var(--space-lg);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.modal-content img {
+  margin-inline: auto;
+  max-width: 50%;
+  border-radius: 4px;
+}
+
+#modal-price {
+  color: #2563eb;
+}
+
+#modal-description {
+  color: #303030;
+}
+
+.modal-close {
+  align-self: end;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ------ Log-in ------ */
+
+.img-logado {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.img-logado img {
+  width: 100%;
+  border-radius: 100%;
+  border: 2px solid rgb(160, 160, 160);
+}
+
+.log {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+.log-content {
+  background-color: transparent;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  max-width: 400px;
+  width: 90%;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  border-radius: 8px;
+  color: white;
+}
+
+.log-content .log-close {
+  display: flex;
+  align-self: end;
+  justify-content: end;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.log-content .log-img {
+  width: 20%;
+  border-radius: 100%;
+  margin: 0 auto var(--space-md);
+}
+
+.log-content .log-title {
+  text-align: center;
+  color: white;
+  margin-bottom: var(--space-md);
+}
+
+.log-content .inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-content input {
+  margin-bottom: var(--space-md);
+  padding: var(--space-md) var(--space-md);
+  border-radius: 8px;
+  border: 1px solid #0000003f;
+}
+
+.log-content .log-mostrar {
+  margin-bottom: var(--space-lg);
+}
+
+.log-content .log-buttons {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: var(--space-xs);
+  color: white;
+}
+
+.log-content .log-buttons button {
+  padding: var(--space-sm) var(--space-md);
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+}
+
+.log-content .log-buttons .log-enter {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 24px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.log-content .log-buttons .log-enter:hover {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.log-content .log-buttons .log-create {
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: var(--space-xs);
+}
+
+.log-content .log-buttons .log-create:hover {
+  color: rgb(202, 202, 202);
+  transform: translateY(-1px);
+}
+
+/* ------ Footer ------ */
+
+footer .cop {
+  text-align: center;
+  padding-bottom: var(--space-md);
+  opacity: 0.65;
+}
+
+@media (min-width: 768px) {
+  header nav ul {
+    gap: var(--space-lg);
+  }
+
+  aside {
+    font-size: 1.1rem;
+  }
+
+  header .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav ul {
+    gap: var(--space-lg);
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+}

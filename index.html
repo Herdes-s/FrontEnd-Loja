@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MegaMix | Loja de Tecnologia e Roupas</title>
+    <meta
+      name="description"
+      content="Compre PCs Gamer, periféricos e acessórios tecnológicos com os melhores preços. Promoções exclusivas na MegaMix."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="/">
+          <img
+            class="logo"
+            src="https://phygital-files.mercafacil.com/megamix-bucket/uploads/empresa/newlogomegamix_6c8a938e-59c7-4467-8fd9-22cf5b3ad4d1.png"
+            alt="Logo da MegaMix"
+          />
+        </a>
+        <nav aria-label="Navegação principal">
+          <button
+            class="search-toggle"
+            aria-label="Abrir aba de busca"
+            aria-expanded="false"
+          >
+            <img
+              src="https://img.icons8.com/?size=100&id=132&format=png&color=000000"
+              alt="Pesquisar"
+            />
+          </button>
+          <input
+            type="search"
+            id="search"
+            class="search-input hidden"
+            placeholder="Buscar produto..."
+            aria-label="Buscar produto"
+          />
+          <button class="button-logIn">Log-in</button>
+          <div class="img-logado hidden">
+            <img
+              src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+              alt=""
+            />
+          </div>
+        </nav>
+      </div>
+    </header>
+    <aside aria-labelledby="promo-title">
+      <h2 id="promo-title">Promoção de Páscoa</h2>
+      <p>30% de desconto na compra de qualquer produto da loja</p>
+      <button aria-label="Fechar promoção">✕</button>
+    </aside>
+    <main>
+      <section id="home" class="container">
+        <h1>MegaMix</h1>
+        <p>Roupas, Tecnologia e muito mais</p>
+      </section>
+      <section id="products" class="container">
+        <h2>Produtos</h2>
+
+        <div class="products" id="products-list"></div>
+      </section>
+    </main>
+    <div class="log">
+      <div class="log-content log-in">
+        <button class="log-close log-close-create" aria-label="fechar log">
+          X
+        </button>
+
+        <img
+          src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+          alt=""
+          class="log-img"
+        />
+        <h2 class="log-title">Conecte-se</h2>
+
+        <form action="#" method="POST" class="form">
+          <div class="inputs">
+            <input type="email" class="log-email" placeholder="E-mail" />
+
+            <input type="password" class="log-senha" placeholder="Senha" />
+          </div>
+          <input type="checkbox" id="in-mostrar-senha" class="log-mostrar" />
+          <label for="in-mostrar-senha">Mostrar senha</label>
+          <div class="log-buttons">
+            <button type="button" class="log-enter log-enter-in">Enviar</button>
+            <p>Ou</p>
+            <button type="button" class="log-create log-create-in">
+              Criar Conta
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="log-content create-account hidden">
+        <button class="log-close log-close-in" aria-label="fechar log">
+          X
+        </button>
+
+        <img
+          src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+          alt=""
+          class="log-img"
+        />
+        <h2 class="log-title">Criar Conta</h2>
+
+        <form action="#" method="POST" class="form">
+          <div class="inputs">
+            <input type="text" class="log-name" placeholder="Nome" />
+
+            <input type="email" class="log-email" placeholder="E-mail" />
+
+            <input type="password" class="log-senha" placeholder="Senha" />
+          </div>
+          <input
+            type="checkbox"
+            class="log-mostrar"
+            id="account-mostrar-senha"
+          />
+          <label for="account-mostrar-senha">Mostrar senha</label>
+          <div class="log-buttons">
+            <button type="button" class="log-enter log-enter-account">
+              Entrar
+            </button>
+            <p>Ou</p>
+            <button type="button" class="log-create log-create-account">
+              Já tenho conta
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer id="contact">
+      <div class="container">
+        <section>
+          <h2>Contato</h2>
+          <p>E-mail: lojahero@gmail.com</p>
+          <p>WhatsApp: (00) 0 0000-0000</p>
+        </section>
+        <p class="cop">© 2026 - MegaMix</p>
+      </div>
+    </footer>
+    <div
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal-content">
+        <button class="modal-close" aria-label="fechar modal">X</button>
+
+        <img id="modal-image" alt="" />
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <p id="modal-price"></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
