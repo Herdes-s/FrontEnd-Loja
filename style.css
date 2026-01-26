@@ -41,15 +41,19 @@ header {
 
 header .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+justify-content: space-between;
   align-items: center;
   padding-block: var(--space-md);
   gap: var(--space-sm);
 }
 
 .logo {
-  max-width: 160px;
-  filter: drop-shadow(0 0 20px #000000);
+  max-width: 100px;
+}
+
+.logo img {
+  width: 100%;
 }
 
 a {
@@ -378,13 +382,33 @@ aside button {
 
 /* ------ Footer ------ */
 
+.contact h2{
+  padding-bottom: var(--space-md);
+}
+
+.contact p {
+  display: flex;
+  align-items: center;
+  padding-bottom: var(--space-sm);
+}
+
+.contact a {
+  text-decoration: underline;
+}
+
+.contact p img {
+  width: 24px;
+  
+}
+
+
 footer .cop {
   text-align: center;
   padding-bottom: var(--space-md);
   opacity: 0.65;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   header nav ul {
     gap: var(--space-lg);
   }
@@ -394,8 +418,7 @@ footer .cop {
   }
 
   header .container {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
   }
 
   nav ul {
