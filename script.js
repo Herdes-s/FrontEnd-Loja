@@ -81,9 +81,12 @@ function ProductCard(product) {
   <h3 class="name-product">${product.title}</h3>
   <p class="description">${product.description}</p>
   <p class="price">R$ ${product.price.toLocaleString("pt-BR")}</p>
-  <button data-id="${product.id}" aria-label="Ver mais sobre ${
+  <div class="buttons">
+  <button class="button-about" data-id="${product.id}" aria-label="Ver mais sobre ${
     product.title
   }"> Ver mais </button>
+  <button class="buy">Comprar</button>
+  </div>
   </article>
   `;
 }
@@ -109,7 +112,7 @@ function render() {
 
 function renderUser() {
   if (!state.isLogged) return;
-  
+
   hide(buttonLogIn);
   show(imgLogado);
 
