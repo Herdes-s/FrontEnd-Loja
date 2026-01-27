@@ -236,6 +236,7 @@ aside button {
 
 .product-card .description {
   display: -webkit-box;
+  line-clamp: 5;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -470,11 +471,77 @@ aside button {
 .toast.info    { background: #3b82f6; }
 
 
-footer .cop {
-  text-align: center;
-  padding-bottom: var(--space-md);
-  opacity: 0.65;
+.footer {
+  background: #0f172a;
+  color: #cbd5f5;
+  padding: 48px 24px 20px;
+  margin-top: 80px;
 }
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+}
+
+.footer h2 {
+  color: #fff;
+  font-size: 22px;
+}
+
+.footer h3 {
+  color: #fff;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.footer p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer li {
+  margin-bottom: 8px;
+}
+
+.footer a {
+  color: #cbd5f5;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: #38bdf8;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 20px;
+}
+
+.social-icons img {
+  width: 32px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1e293b;
+  margin-top: 32px;
+  padding-top: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* Outros */
 
 .skeleton {
   background: linear-gradient(
