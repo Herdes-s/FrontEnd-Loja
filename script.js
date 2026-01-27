@@ -7,9 +7,20 @@ const state = {
   searchOpen: false,
   modalProduct: null,
 
-  use: null,
+  user: null,
   isLogged: false,
 };
+
+const savedUserJson = localStorage.getItem("user");
+
+if (savedUserJson) {
+  try {
+    state.user = JSON.parse(savedUserJson) || null;
+    state.isLogged = true;
+  } catch {
+    localStorage.removeItem("user");
+  }
+}
 
 // ------ DOM CACHE ------
 
@@ -41,6 +52,8 @@ const logEnterIn = document.querySelector(".log-enter-in");
 const logCloseCreate = document.querySelector(".log-close-create");
 const logCloseIn = document.querySelector(".log-close-in");
 
+const toast = document.querySelector("#toast");
+
 const show = (el) => el.classList.remove("hidden");
 const hide = (el) => el.classList.add("hidden");
 
@@ -57,6 +70,7 @@ userNameEl.style.fontWeight = "500";
 // API
 async function fetchProducts() {
   try {
+    renderSkeleton();
     const response = await fetch("https://fakestoreapi.com/products/");
     const data = await response.json();
 
@@ -91,11 +105,41 @@ function ProductCard(product) {
   `;
 }
 
+function showToast(message, type = "info") {
+  toast.textContent = message;
+  toast.className = `toast ${type} show`;
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
 // ------ RENDER (UI) ------
 
 // Renderizar produtos
 
+function renderSkeleton() {
+  productsList.innerHTML = Array(6)
+    .fill(0)
+    .map(
+      () => `
+    <article class="product-card">
+      <div class="skeleton" style="height:200px"></div>
+      <div class="skeleton" style="height:20px; margin-top:8px;"></div>
+      <div class="skeleton" style="height:14px; width:60%; margin-top:4px;"></div>
+    </article>
+  `,
+    )
+    .join("");
+}
+
 function renderProducts(list) {
+  if (list.length === 0) {
+    productsList.innerHTML =
+      '<p class="empty-state">Nenhum produto encontrado.</p>';
+    return;
+  }
+
   productsList.innerHTML = list.map(ProductCard).join("");
 }
 
@@ -116,7 +160,7 @@ function renderUser() {
   hide(buttonLogIn);
   show(imgLogado);
 
-  userNameEl.textContent = state.use.name;
+  userNameEl.textContent = state.user.name;
 }
 
 // Modal
@@ -244,20 +288,22 @@ logEnterAccount.addEventListener("click", (e) => {
   const password = createAccount.querySelector(".log-senha").value;
 
   if (!name || !email || !password) {
-    alert("Preencha todos os campos");
+    showToast("Preencha todos os campos", "error");
     return;
   }
 
-  state.use = {
+  state.user = {
     name,
     email,
     password,
   };
 
+  localStorage.setItem("user", JSON.stringify(state.user));
+
   hide(createAccount);
   show(logIn);
 
-  alert("Conta criada com Susseco!");
+  showToast("Conta criada com Susseco!", "success");
 });
 
 // Logar na conta
@@ -265,16 +311,16 @@ logEnterAccount.addEventListener("click", (e) => {
 logEnterIn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (!state.use) {
-    alert("Nenhuma conta criada!");
+  if (!state.user) {
+    showToast("Nenhuma conta encontrada", "info");
     return;
   }
 
   const email = logIn.querySelector(".log-email").value;
   const password = logIn.querySelector(".log-senha").value;
 
-  if (email !== state.use.email || password !== state.use.password) {
-    alert("E-mail ou Senha invalida!");
+  if (email !== state.user.email || password !== state.user.password) {
+    showToast("E-mail ou senha inválidos", "error");
     return;
   }
 
@@ -287,3 +333,7 @@ logEnterIn.addEventListener("click", (e) => {
 // ------ INIT ------
 
 fetchProducts();
+
+if (state.isLogged) {
+  renderUser();
+}
