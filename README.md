@@ -1,4 +1,4 @@
-# 🛒 TechStore — Loja Front-end
+# TechStore — Loja Front-end
 
 ![Imagem do site](./image-site.png)
 
@@ -39,7 +39,7 @@ Projeto de **loja virtual front-end** desenvolvido com foco em **UX, organizaç�
  ├── 📄 index.html
  ├── 🎨 style.css
  ├── ⚙️ script.js
- └── 📁 assets/
+ └── 📁 Images/
 ```
 
 ---
